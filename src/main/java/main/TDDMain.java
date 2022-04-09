@@ -42,19 +42,26 @@ public class TDDMain {
   private int getSumOfNumbers(String[] numbers) throws Exception {
     int sum = 0;
     List<Integer> negativeNumbersList = new ArrayList<>();
+
     for (String numberString : numbers) {
-      int number = getIntegerFromString(numberString);
-      if(number < 0){
-        negativeNumbersList.add(number);
-        continue;
-      }
-      sum += number;
+      sum = getSum(sum, negativeNumbersList, numberString);
+      continue;
     }
 
     if(!negativeNumbersList.isEmpty()){
       throw new Exception("Negatives not allowed : "+ Arrays.toString(negativeNumbersList.toArray()));
     }
 
+    return sum;
+  }
+
+  private int getSum(int sum, List<Integer> negativeNumbersList, String numberString) {
+    int number = getIntegerFromString(numberString);
+    if(number < 0){
+      negativeNumbersList.add(number);
+      return sum;
+    }
+    sum += number;
     return sum;
   }
 }
