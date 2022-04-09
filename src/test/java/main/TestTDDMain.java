@@ -72,7 +72,6 @@ public class TestTDDMain {
       assertTrue(actualMessage.equals(expectedMessage), "Expected an Exception to be thrown with custom message");
     }
 
-
     @Test
     @DisplayName("Test Add Method with negative numbers")
     public void testAddMethodHandleNegativeNumbers() {
@@ -95,8 +94,32 @@ public class TestTDDMain {
 
       String expectedMessage = "Invalid String Received : [a,  b]";
       String actualMessage = exception.getMessage();
-      System.out.println(actualMessage);
       assertTrue(actualMessage.equals(expectedMessage), "Expected an NumberFormatException to be thrown with custom message");
+    }
+
+    @Test
+    @DisplayName("Test Add Method handle Invalid Pattern")
+    public void testAddMethodHandleInvalidPattern() {
+      Exception exception = assertThrows(NumberFormatException.class, () -> {
+        ttdmainObj.add("//;-1;-2");
+      });
+
+      String expectedMessage = "Invalid String Received : [//;-1;-2]";
+      String actualMessage = exception.getMessage();
+      assertTrue(actualMessage.equals(expectedMessage), "Expected an NumberFormatException to be thrown with custom message");
+    }
+
+
+    @Test
+    @DisplayName("Test Add Method handle Invalid Pattern")
+    public void testAddMethodHandleNegativeNumberAlongWithPositiveNumber() {
+      Exception exception = assertThrows(Exception.class, () -> {
+        ttdmainObj.add("//;\n-1;2;3;-4");
+      });
+
+      String expectedMessage = "Negatives not allowed : [-1, -4]";
+      String actualMessage = exception.getMessage();
+      assertTrue(actualMessage.equals(expectedMessage), "Expected an Exception to be thrown with custom message and the numbers");
     }
   }
 }
