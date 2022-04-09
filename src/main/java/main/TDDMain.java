@@ -9,6 +9,7 @@ public class TDDMain {
     if(number.equals("")){
       return 0;
     }
-    return -1;
+    int num  = Integer.parseInt(number);
+    return num;
   }
 }
