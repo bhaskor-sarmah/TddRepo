@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestTDDMain {
 
@@ -57,6 +57,19 @@ public class TestTDDMain {
     public void testAddMethodHandleCustomDelimiter() {
       int result = ttdmainObj.add("//;\n1;2");
       assertEquals(3, result, "Expected add method to use custom delimiter and return the sum of all the numbers");
+    }
+
+    @Test
+    @DisplayName("Test Add Method with negative number")
+    public void testAddMethodHandleNegativeNumber() {
+      Exception exception = assertThrows(Exception.class, () -> {
+        ttdmainObj.add("-1");
+      });
+
+      String expectedMessage = "Negatives not allowed - ";
+      String actualMessage = exception.getMessage();
+
+      assertTrue(actualMessage.contains(expectedMessage));
     }
   }
 }
