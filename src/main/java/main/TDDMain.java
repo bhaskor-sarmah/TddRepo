@@ -5,11 +5,11 @@ public class TDDMain {
 
   }
 
-  public int add(String number){
-    if(number.equals("")){
+  public int add(String number) {
+    if (number.isEmpty()) {
       return 0;
+    } else {
+      return Integer.parseInt(number);
     }
-    int num  = Integer.parseInt(number);
-    return num;
   }
 }
