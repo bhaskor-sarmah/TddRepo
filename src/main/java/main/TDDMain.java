@@ -10,7 +10,11 @@ public class TDDMain {
       return 0;
     } else if (number.contains(",")) {
       String numbers[] = number.split(",");
-      return getIntegerFromString(numbers[0]) + getIntegerFromString(numbers[1]);
+      int sum = 0;
+      for(String numberString : numbers){
+        sum += getIntegerFromString(numberString);
+      }
+      return sum;
     } else {
       return getIntegerFromString(number);
     }
