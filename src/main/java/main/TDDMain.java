@@ -11,14 +11,11 @@ public class TDDMain {
   public int add(String number) {
     if (number.isEmpty()) {
       return 0;
-    } else {
-      String numbers[] = splitStringWithDelimeter(number);
-      int sum = 0;
-      for (String numberString : numbers) {
-        sum += getIntegerFromString(numberString);
-      }
-      return sum;
     }
+
+    String numbers[] = splitStringWithDelimeter(number);
+
+    return getSumOfNumbers(numbers);
   }
 
   private String[] splitStringWithDelimeter(String number) {
@@ -37,5 +34,13 @@ public class TDDMain {
   private int getIntegerFromString(String number) {
     number = number.trim();
     return Integer.parseInt(number);
+  }
+
+  private int getSumOfNumbers(String[] numbers) {
+    int sum = 0;
+    for (String numberString : numbers) {
+      sum += getIntegerFromString(numberString);
+    }
+    return sum;
   }
 }
