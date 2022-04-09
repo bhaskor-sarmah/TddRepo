@@ -40,19 +40,23 @@ public class TDDMain {
   }
 
   private int getSumOfNumbers(String[] numbers) throws Exception {
-    int sum = 0;
-    List<Integer> negativeNumbersList = new ArrayList<>();
+    try {
+      int sum = 0;
+      List<Integer> negativeNumbersList = new ArrayList<>();
 
-    for (String numberString : numbers) {
-      sum = getSum(sum, negativeNumbersList, numberString);
-      continue;
+      for (String numberString : numbers) {
+        sum = getSum(sum, negativeNumbersList, numberString);
+        continue;
+      }
+
+      if (!negativeNumbersList.isEmpty()) {
+        throw new Exception("Negatives not allowed : " + Arrays.toString(negativeNumbersList.toArray()));
+      }
+
+      return sum;
+    }catch (NumberFormatException e){
+      throw new NumberFormatException("Invalid String Received : "+Arrays.toString(numbers));
     }
-
-    if(!negativeNumbersList.isEmpty()){
-      throw new Exception("Negatives not allowed : "+ Arrays.toString(negativeNumbersList.toArray()));
-    }
-
-    return sum;
   }
 
   private int getSum(int sum, List<Integer> negativeNumbersList, String numberString) {

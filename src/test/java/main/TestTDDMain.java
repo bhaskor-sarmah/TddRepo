@@ -93,7 +93,7 @@ public class TestTDDMain {
         ttdmainObj.add("a, b");
       });
 
-      String expectedMessage = "Invalid String Received : a, b";
+      String expectedMessage = "Invalid String Received : [a,  b]";
       String actualMessage = exception.getMessage();
       System.out.println(actualMessage);
       assertTrue(actualMessage.equals(expectedMessage), "Expected an NumberFormatException to be thrown with custom message");
