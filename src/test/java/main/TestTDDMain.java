@@ -85,5 +85,18 @@ public class TestTDDMain {
 
       assertTrue(actualMessage.equals(expectedMessage), "Expected an Exception to be thrown with custom message and the numbers");
     }
+
+    @Test
+    @DisplayName("Test Add Method handle NumberFormatException")
+    public void testAddMethodHandleNumberFormatException() {
+      Exception exception = assertThrows(NumberFormatException.class, () -> {
+        ttdmainObj.add("a, b");
+      });
+
+      String expectedMessage = "Invalid String Received : a, b";
+      String actualMessage = exception.getMessage();
+      System.out.println(actualMessage);
+      assertTrue(actualMessage.equals(expectedMessage), "Expected an NumberFormatException to be thrown with custom message");
+    }
   }
 }
