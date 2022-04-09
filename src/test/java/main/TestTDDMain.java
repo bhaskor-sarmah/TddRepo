@@ -69,7 +69,21 @@ public class TestTDDMain {
       String expectedMessage = "Negatives not allowed - ";
       String actualMessage = exception.getMessage();
 
-      assertTrue(actualMessage.contains(expectedMessage));
+      assertTrue(actualMessage.contains(expectedMessage), "Expected an Exception to be thrown with custom message");
+    }
+
+
+    @Test
+    @DisplayName("Test Add Method with negative numbers")
+    public void testAddMethodHandleNegativeNumbers() {
+      Exception exception = assertThrows(Exception.class, () -> {
+        ttdmainObj.add("//;\n-1;-2");
+      });
+
+      String expectedMessage = "Negatives not allowed : -1, -2";
+      String actualMessage = exception.getMessage();
+
+      assertTrue(actualMessage.contains(expectedMessage), "Expected an Exception to be thrown with custom message and the numbers");
     }
   }
 }
