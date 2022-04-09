@@ -38,5 +38,13 @@ public class TestTDDMain {
       assertEquals(9, result, "Expected add method to return the sum of the numbers");
     }
 
+
+    @Test
+    @DisplayName("Test Add Method with multiple numbers")
+    public void testAddMethodMultipleNumbers() {
+      int result = ttdmainObj.add("5, 4, 6, 8, 15, 31");
+      assertEquals(69, result, "Expected add method to return the sum of all the numbers");
+    }
+
   }
 }
