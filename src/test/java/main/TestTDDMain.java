@@ -66,10 +66,10 @@ public class TestTDDMain {
         ttdmainObj.add("-1");
       });
 
-      String expectedMessage = "Negatives not allowed - ";
+      String expectedMessage = "Negatives not allowed : [-1]";
       String actualMessage = exception.getMessage();
 
-      assertTrue(actualMessage.contains(expectedMessage), "Expected an Exception to be thrown with custom message");
+      assertTrue(actualMessage.equals(expectedMessage), "Expected an Exception to be thrown with custom message");
     }
 
 
@@ -80,10 +80,10 @@ public class TestTDDMain {
         ttdmainObj.add("//;\n-1;-2");
       });
 
-      String expectedMessage = "Negatives not allowed : -1, -2";
+      String expectedMessage = "Negatives not allowed : [-1, -2]";
       String actualMessage = exception.getMessage();
 
-      assertTrue(actualMessage.contains(expectedMessage), "Expected an Exception to be thrown with custom message and the numbers");
+      assertTrue(actualMessage.equals(expectedMessage), "Expected an Exception to be thrown with custom message and the numbers");
     }
   }
 }
