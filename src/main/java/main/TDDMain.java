@@ -10,9 +10,14 @@ public class TDDMain {
       return 0;
     } else if (number.contains(",")) {
       String numbers[] = number.split(",");
-      return Integer.parseInt(numbers[0].trim()) + Integer.parseInt(numbers[1].trim());
+      return getIntegerFromString(numbers[0]) + getIntegerFromString(numbers[1]);
     } else {
-      return Integer.parseInt(number);
+      return getIntegerFromString(number);
     }
+  }
+
+  private int getIntegerFromString(String number){
+    number = number.trim();
+    return Integer.parseInt(number);
   }
 }
