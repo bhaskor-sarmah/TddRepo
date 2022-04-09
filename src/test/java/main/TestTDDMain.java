@@ -24,5 +24,12 @@ public class TestTDDMain {
       assertEquals(0, result, "Expected add method to return 0");
     }
 
+    @Test
+    @DisplayName("Test Add Method with single number")
+    public void testAddMethodSingleNumber() {
+      int result = ttdmainObj.add("5");
+      assertEquals(5, result, "Expected add method to return the same number");
+    }
+
   }
 }
