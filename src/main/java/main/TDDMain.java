@@ -1,5 +1,8 @@
 package main;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class TDDMain {
   public static void main(String[] args) {
 
@@ -11,7 +14,7 @@ public class TDDMain {
     } else {
       String numbers[] = splitStringWithDelimeter(number);
       int sum = 0;
-      for(String numberString : numbers){
+      for (String numberString : numbers) {
         sum += getIntegerFromString(numberString);
       }
       return sum;
@@ -19,10 +22,17 @@ public class TDDMain {
   }
 
   private String[] splitStringWithDelimeter(String number) {
-    return number.split(",|\n");
+    Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(number);
+    if (matcher.matches()) {
+      String delimiter = matcher.group(1);
+      String numberString = matcher.group(2);
+      return numberString.split(delimiter);
+    } else {
+      return number.split(",|\n");
+    }
   }
 
-  private int getIntegerFromString(String number){
+  private int getIntegerFromString(String number) {
     number = number.trim();
     return Integer.parseInt(number);
   }
