@@ -38,7 +38,6 @@ public class TestTDDMain {
       assertEquals(9, result, "Expected add method to return the sum of the numbers");
     }
 
-
     @Test
     @DisplayName("Test Add Method with multiple numbers")
     public void testAddMethodMultipleNumbers() {
@@ -46,12 +45,18 @@ public class TestTDDMain {
       assertEquals(69, result, "Expected add method to return the sum of all the numbers");
     }
 
-
     @Test
-    @DisplayName("Test Add Method with newline as delimeter")
-    public void testAddMethodHandleNewlineAsDelimeter() {
+    @DisplayName("Test Add Method with newline as delimiter")
+    public void testAddMethodHandleNewlineAsDelimiter() {
       int result = ttdmainObj.add("5, 4, 6\n 8, 15\n 31");
       assertEquals(69, result, "Expected add method to return the sum of all the numbers");
+    }
+
+    @Test
+    @DisplayName("Test Add Method with custom delimiter")
+    public void testAddMethodHandleCustomDelimiter() {
+      int result = ttdmainObj.add("//;\n1;2");
+      assertEquals(3, result, "Expected add method to use custom delimiter and return the sum of all the numbers");
     }
   }
 }
