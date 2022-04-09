@@ -31,5 +31,12 @@ public class TestTDDMain {
       assertEquals(5, result, "Expected add method to return the same number");
     }
 
+    @Test
+    @DisplayName("Test Add Method with two numbers")
+    public void testAddMethodTwoNumbers() {
+      int result = ttdmainObj.add("5, 4");
+      assertEquals(9, result, "Expected add method to return the sum of the numbers");
+    }
+
   }
 }
