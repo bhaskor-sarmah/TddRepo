@@ -8,15 +8,13 @@ public class TDDMain {
   public int add(String number) {
     if (number.isEmpty()) {
       return 0;
-    } else if (number.contains(",")) {
+    } else {
       String numbers[] = number.split(",");
       int sum = 0;
       for(String numberString : numbers){
         sum += getIntegerFromString(numberString);
       }
       return sum;
-    } else {
-      return getIntegerFromString(number);
     }
   }
 
