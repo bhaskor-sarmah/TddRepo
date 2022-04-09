@@ -24,12 +24,14 @@ public class TDDMain {
   private String[] splitStringWithDelimeter(String number) {
     Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(number);
     if (matcher.matches()) {
+
       String delimiter = matcher.group(1);
       String numberString = matcher.group(2);
+
       return numberString.split(delimiter);
-    } else {
-      return number.split(",|\n");
     }
+
+    return number.split(",|\n");
   }
 
   private int getIntegerFromString(String number) {
