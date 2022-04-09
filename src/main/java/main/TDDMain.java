@@ -8,7 +8,7 @@ public class TDDMain {
 
   }
 
-  public int add(String number) {
+  public int add(String number) throws Exception {
     if (number.isEmpty()) {
       return 0;
     }
@@ -31,12 +31,17 @@ public class TDDMain {
     return number.split(",|\n");
   }
 
-  private int getIntegerFromString(String number) {
-    number = number.trim();
-    return Integer.parseInt(number);
+  private int getIntegerFromString(String text) throws Exception {
+    text = text.trim();
+    int number = Integer.parseInt(text);
+
+    if(number < 0){
+      throw new Exception("Negatives not allowed - "+number);
+    }
+    return number;
   }
 
-  private int getSumOfNumbers(String[] numbers) {
+  private int getSumOfNumbers(String[] numbers) throws Exception {
     int sum = 0;
     for (String numberString : numbers) {
       sum += getIntegerFromString(numberString);

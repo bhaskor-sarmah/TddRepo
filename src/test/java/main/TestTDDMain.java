@@ -19,42 +19,42 @@ public class TestTDDMain {
 
     @Test
     @DisplayName("Test Add Method with empty string")
-    public void testAddEmptyString() {
+    public void testAddEmptyString() throws Exception {
       int result = ttdmainObj.add("");
       assertEquals(0, result, "Expected add method to return 0");
     }
 
     @Test
     @DisplayName("Test Add Method with single number")
-    public void testAddMethodSingleNumber() {
+    public void testAddMethodSingleNumber() throws Exception {
       int result = ttdmainObj.add("5");
       assertEquals(5, result, "Expected add method to return the same number");
     }
 
     @Test
     @DisplayName("Test Add Method with two numbers")
-    public void testAddMethodTwoNumbers() {
+    public void testAddMethodTwoNumbers() throws Exception {
       int result = ttdmainObj.add("5, 4");
       assertEquals(9, result, "Expected add method to return the sum of the numbers");
     }
 
     @Test
     @DisplayName("Test Add Method with multiple numbers")
-    public void testAddMethodMultipleNumbers() {
+    public void testAddMethodMultipleNumbers() throws Exception {
       int result = ttdmainObj.add("5, 4, 6, 8, 15, 31");
       assertEquals(69, result, "Expected add method to return the sum of all the numbers");
     }
 
     @Test
     @DisplayName("Test Add Method with newline as delimiter")
-    public void testAddMethodHandleNewlineAsDelimiter() {
+    public void testAddMethodHandleNewlineAsDelimiter() throws Exception {
       int result = ttdmainObj.add("5, 4, 6\n 8, 15\n 31");
       assertEquals(69, result, "Expected add method to return the sum of all the numbers");
     }
 
     @Test
     @DisplayName("Test Add Method with custom delimiter")
-    public void testAddMethodHandleCustomDelimiter() {
+    public void testAddMethodHandleCustomDelimiter() throws Exception {
       int result = ttdmainObj.add("//;\n1;2");
       assertEquals(3, result, "Expected add method to use custom delimiter and return the sum of all the numbers");
     }
