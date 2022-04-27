@@ -121,5 +121,20 @@ public class TestTDDMain {
       String actualMessage = exception.getMessage();
       assertTrue(actualMessage.equals(expectedMessage), "Expected an Exception to be thrown with custom message and the numbers");
     }
+
+    @Test
+    @DisplayName("Test Add Method handle Invalid Pattern")
+    public void testAddMethodHandleNumbersEqualToOrGreaterThan1000() throws Exception {
+      int result = ttdmainObj.add("1, 1000");
+      assertEquals(1, result, "Expected add method to ignore 1000");
+    }
+
+    @Test
+    @DisplayName("Test Add Method handle Invalid Pattern")
+    public void testAddMethodHandle_Astrek_As_Delimeter() throws Exception {
+      int result = ttdmainObj.add("//*\n1*2");
+      assertEquals(3, result, "Expected add method to use Astrek as a delimiter");
+    }
+
   }
 }

@@ -2,7 +2,9 @@ package main;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,11 +24,19 @@ public class TDDMain {
   }
 
   private String[] splitStringWithDelimeter(String number) {
+    // This Set is used to excape special characters in a delimiter
+    Set<String> delimitersToBeExcaped = new HashSet<>(
+        Arrays.asList(".", "$", "|", "^", "*", "+", "?", "\\", "(", ")", "[", "]", "{", "}"));
+
     Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(number);
     if (matcher.matches()) {
 
       String delimiter = matcher.group(1);
       String numberString = matcher.group(2);
+
+      if(delimitersToBeExcaped.contains(delimiter)){
+        delimiter = Pattern.quote(delimiter);
+      }
 
       return numberString.split(delimiter);
     }
@@ -65,7 +75,9 @@ public class TDDMain {
       negativeNumbersList.add(number);
       return sum;
     }
-    sum += number;
+    if(number < 1000) {
+      sum += number;
+    }
     return sum;
   }
 }
